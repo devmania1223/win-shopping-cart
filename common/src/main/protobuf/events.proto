@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package data.model;
+
+message Id {
+    string value = 1;
+}
+
+message Item {
+    Id productId = 1;
+    Id vendorId = 2;
+    string name = 3;
+    double price = 4;
+    int32 quantity = 5;
+}
+
+message ItemAdded {
+    Item item = 1;
+    string timeAdded = 2;   // ZonedDateTime
+    Id cartId = 3;
+}
+
+message ItemRemoved {
+    Item item = 1;
+    string timeRemoved = 2;   // ZonedDateTime
+    Id cartId = 3;
+}
+
+message ItemQuantityIncreased {
+    Item item = 1;
+    int32 amount = 2;
+    string time = 3;   // ZonedDateTime
+    Id cartId = 4;
+}
+
+message ItemQuantityDecreased {
+    Item item = 1;
+    int32 amount = 2;
+    string time = 3;   // ZonedDateTime
+    Id cartId = 4;
+}
+
+message ItemPurchased {
+    Id cartId = 1;
+    string timePurchased = 2; // ZonedDateTime
+    Item item = 3;
+}
